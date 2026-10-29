@@ -24,6 +24,9 @@ jobs:
       - name: Extract source ZIP
         run: unzip -o G88FPS-Source.zip -d source
 
+      - name: Fix Fabric Loom repository mode
+        run: sed -i 's/RepositoriesMode.FAIL_ON_PROJECT_REPOS/RepositoriesMode.PREFER_PROJECT/' source/G88-Mobile-FPS/settings.gradle
+        
       - name: Build mod
         working-directory: source/G88-Mobile-FPS
         run: gradle build --no-daemon
